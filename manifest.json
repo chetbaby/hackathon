@@ -22,7 +22,8 @@
   "permissions": [
     "tabs",
     "storage",
-    "commands"
+    "commands",
+    "contextMenus"
     //   "tabs"
   ],
   // "chrome_settings_overrides": {
@@ -43,6 +44,15 @@
         "windows": "Ctrl+9"
       },
       "description": "Toggle tab pinning",
+      "global": true
+    },
+    "close-tabs": {
+      "suggested_key": {
+        "default": "Ctrl+1",
+        "mac": "MacCtrl+1",
+        "windows": "Ctrl+1"
+      },
+      "description": "Closes unpinned tabs",
       "global": true
     }
   }
