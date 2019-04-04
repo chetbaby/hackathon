@@ -19,13 +19,7 @@
     //   // Optional
     //   "service_worker_script":
   },
-  "permissions": [
-    "tabs",
-    "storage",
-    "commands",
-    "contextMenus"
-    //   "tabs"
-  ],
+  "permissions": ["tabs", "storage", "commands", "contextMenus"],
   // "chrome_settings_overrides": {
   // },
   // "chrome_ui_overrides": {
@@ -53,6 +47,15 @@
         "windows": "Ctrl+1"
       },
       "description": "Closes unpinned tabs",
+      "global": true
+    },
+    "(un)pin-all": {
+      "suggested_key": {
+        "default": "Ctrl+5",
+        "mac": "MacCtrl+5",
+        "windows": "Ctrl+5"
+      },
+      "description": "Pins or unpins all tabs",
       "global": true
     }
   }
