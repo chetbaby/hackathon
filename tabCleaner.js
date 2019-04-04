@@ -1,8 +1,8 @@
 chrome.runtime.onInstalled.addListener(function() {
-  console.log("The color is green.");
+  console.log("Tabulous is running!");
 });
 
-let allPinned = false;
+// > Listen for Commands
 
 chrome.commands.onCommand.addListener(command => {
   if (command === "pin-tab") {
@@ -21,7 +21,6 @@ chrome.commands.onCommand.addListener(command => {
     });
   }
 
-  //TODO: toggle logic
   if (command === "(un)pin-all") {
     chrome.tabs.query({ currentWindow: true }, function(tab) {
       tab.forEach(function(el) {
@@ -31,27 +30,25 @@ chrome.commands.onCommand.addListener(command => {
           tab.forEach(function(el) {
             chrome.tabs.update(el.id, { pinned: false });
           });
-        // console.log("hi");
       });
     });
   }
-
-  // if (command === "unpin-all") {
-  //   console.log("hi");
-  //   chrome.tabs.query({ currentWindow: true }, function (tab) {
-
-  //     tab.forEach(function(el) {
-  //       chrome.tabs.update(el.id, { pinned: true });
-  //     });
-  //   });
-  // }
 });
+
+// > Context Menu Items
 
 let closeUnpinnedTabs = {
   id: "closeUnpinnedTabs",
-  title: "closeUnpinnedTabs",
+  title: "Close Unpinned Tabs",
   contexts: ["all"]
 };
+
+let pinAllToggle = {
+  id: "pinToggle",
+  title: "(Un)pin-all",
+  contexts: ["all"]
+};
+
 chrome.contextMenus.create(closeUnpinnedTabs);
 
 chrome.contextMenus.onClicked.addListener(function(clicked) {
@@ -62,4 +59,20 @@ chrome.contextMenus.onClicked.addListener(function(clicked) {
       });
     });
   }
+
+  // ! Depracated
+  // chrome.contextMenus.create(pinAllToggle);
+
+  // if (clicked.menuItemId === "pinToggle") {
+  //   chrome.tabs.query({ currentWindow: true }, function(tab) {
+  //     tab.forEach(function(el) {
+  //       if (el.pinned === false) {
+  //         chrome.tabs.update(el.id, { pinned: true });
+  //       } else
+  //         tab.forEach(function(el) {
+  //           chrome.tabs.update(el.id, { pinned: false });
+  //         });
+  //     });
+  //   });
+  // }
 });
