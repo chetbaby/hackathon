@@ -10,7 +10,11 @@ chrome.runtime.onInstalled.addListener(function() {
 // console.log(chrome);
 // console.log(chrome.commands);
 // console.log(chrome.commands.getAll());
-chrome.commands.onCommand.addListener(command => console.log(command));
-// chrome.commands.onCommand.addListener(function(command) {
-// console.log("hi");
-// });
+chrome.commands.onCommand.addListener(command => {
+  if (command === "pin-tab") {
+    console.log("pin tab works!");
+    chrome.tabs.query({ active: true }, function(tab) {
+      chrome.tabs.update(tab[1].id, { pinned: true });
+    });
+  }
+});
