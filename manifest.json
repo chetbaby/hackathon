@@ -38,9 +38,10 @@
   "commands": {
     "pin-tab": {
       "suggested_key": {
-        "default": "Ctrl+Shift+z",
-        "mac": "MacCtrl+Shift+z"
+        "default": "Ctrl+9",
+        "mac": "MacCtrl+9"
       },
+      "description": "Toggle tab pinning",
       "global": true
     }
   }

@@ -4,13 +4,11 @@ chrome.runtime.onInstalled.addListener(function() {
 });
 
 console.log(chrome.commands);
-console.log(chrome.runtime);
+// console.log(chrome.runtime);
 // console.log(chrome.browserAction);
 // console.log(chrome);
 // console.log(chrome);
-
+// console.log(chrome.commands);
 chrome.commands.onCommand.addListener(function(command) {
-  if (command === "pin-tab") {
-    console.log("hi");
-  }
+  console.log("hi");
 });
