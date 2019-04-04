@@ -6,9 +6,7 @@ chrome.runtime.onInstalled.addListener(function() {
 
 chrome.commands.onCommand.addListener(command => {
   if (command === "pin-tab") {
-    console.log("pin tab works!");
     chrome.tabs.query({ active: true, currentWindow: true }, function(tab) {
-      console.log(tab);
       chrome.tabs.update(tab[0].id, { pinned: true });
     });
   }
