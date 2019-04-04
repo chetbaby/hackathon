@@ -21,15 +21,20 @@ chrome.commands.onCommand.addListener(command => {
     });
   }
 
+  //TODO: toggle logic
   if (command === "(un)pin-all") {
-    console.log("hi");
     chrome.tabs.query({ currentWindow: true }, function(tab) {
       tab.forEach(function(el) {
-        chrome.tabs.update(el.id, { pinned: true });
+        if (el.pinned === false) {
+          chrome.tabs.update(el.id, { pinned: true });
+        } else
+          tab.forEach(function(el) {
+            chrome.tabs.update(el.id, { pinned: false });
+          });
+        // console.log("hi");
       });
     });
   }
-  //TODO: insert unpin-all
 
   // if (command === "unpin-all") {
   //   console.log("hi");
